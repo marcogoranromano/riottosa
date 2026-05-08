@@ -1,0 +1,25 @@
+FONTLOG for Riottosa
+
+This file provides detailed information on the Riottosa font software and its development history.
+
+---
+
+Riottosa is an open source variable display typeface developed for the communication activities of the collective OSA.
+
+---
+
+Version 1.0 — May 2026
+
+- Initial public release
+- Variable font with width and weight axes
+- Four masters:
+  Regular Condensed
+  Bold Condensed
+  Regular Wide
+  Bold Wide
+- Western European language support
+- Released under the SIL Open Font License 1.1
+
+---
+
+Designed by Marco Goran Romano.

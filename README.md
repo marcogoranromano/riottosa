@@ -1,8 +1,8 @@
-# [Font Name]
+# Riottosa
 
-![Sample image](docs/preview.jpg)
+![Sample image](docs/Riottosa_preview.png)
 
-[Short one-sentence description of the typeface.]
+Riottosa is an open source variable typeface designed for collective, cultural and activist visual communication.
 
 ## About
 

@@ -44,13 +44,18 @@ Riottosa supports major Western European languages, including English, Italian, 
 ├── docs/
 ├── sources/
 ├── fonts/
+│   ├── otf/
+│   ├── variable/
+│   └── web/
 └── scripts/
 ```
 
 ### Suggested folders
 
-- `sources/` → editable source files
-- `fonts/` → exported font files
+- `sources/` → editable Glyphs source files
+- `fonts/otf/` → static desktop font files
+- `fonts/variable/` → variable font files for desktop and web use
+- `fonts/web/` → static WOFF2 webfont exports
 - `docs/` → documentation and visual assets
 - `scripts/` → build and utility scripts
 
@@ -70,8 +75,8 @@ Riottosa supports major Western European languages, including English, Italian, 
 @font-face {
   font-family: 'Riottosa';
   src:
-    url('fonts/RiottosaVF.woff2') format('woff2'),
-    url('fonts/RiottosaVF.woff') format('woff');
+    url('fonts/variable/RiottosaVF.woff2') format('woff2'),
+    url('fonts/variable/RiottosaVF.woff') format('woff');
   font-weight: 0 100;
   font-stretch: 0% 100%;
   font-style: normal;

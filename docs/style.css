@@ -1,7 +1,7 @@
 /* Font */
 @font-face {
   font-family: "Riottosa VF";
-  src: url("../fonts/variable/RiottosaVF.woff2") format("woff2");
+  src: url("./fonts/variable/RiottosaVF.woff2") format("woff2");
   font-weight: 1 1000;
   font-stretch: 50% 200%;
   font-style: normal;

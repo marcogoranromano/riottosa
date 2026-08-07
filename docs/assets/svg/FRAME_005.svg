@@ -1,0 +1,7 @@
+<svg width="380" height="410" viewBox="0 0 380 410" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="378" height="408" rx="19" fill="black" stroke="black" stroke-width="2"/>
+<circle cx="360" cy="60" r="6" transform="rotate(90 360 60)" stroke="white" stroke-width="2"/>
+<circle cx="360" cy="40" r="6" transform="rotate(90 360 40)" stroke="white" stroke-width="2"/>
+<circle cx="360" cy="20" r="6" transform="rotate(90 360 20)" stroke="white" stroke-width="2"/>
+<path d="M10 340L372 340" stroke="white" stroke-width="2"/>
+</svg>

@@ -4,11 +4,476 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RIOTTOSA</title>
+    <meta
+      name="description"
+      content="Riottosa is an open-source variable display typeface for collective voices and common causes."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main class="hero" role="main" aria-label="Hero RIOTTOSA">
-      <h1 class="hero__word">RIOTTOSA</h1>
-    </main>
+    <div class="page">
+      <div class="page__gradient" aria-hidden="true"></div>
+
+      <main>
+        <!-- Window — Hero -->
+        <section class="window window--hero" aria-label="Riottosa hero">
+          <img
+            class="window__chrome"
+            src="./assets/svg/FRAME_001.svg"
+            alt=""
+            width="1570"
+            height="570"
+            decoding="async"
+          />
+          <div class="marquee-clip" data-marquee="styles">
+            <div class="marquee-track">
+              <p class="marquee-line">
+                <span class="vf vf--rc">Riottosa Regular Condensed</span>
+                <span class="marquee-sep" aria-hidden="true"> · </span>
+                <span class="vf vf--bc">Riottosa Bold Condensed</span>
+                <span class="marquee-sep" aria-hidden="true"> · </span>
+                <span class="vf vf--rw">Riottosa Regular Wide</span>
+                <span class="marquee-sep" aria-hidden="true"> · </span>
+                <span class="vf vf--bw">Riottosa Bold Wide</span>
+                <span class="marquee-sep" aria-hidden="true"> · </span>
+              </p>
+            </div>
+          </div>
+          <dl class="hero-meta meta">
+            <div>
+              <dt>Font name:</dt>
+              <dd>RIOTTOSA</dd>
+            </div>
+            <div>
+              <dt>Axes:</dt>
+              <dd>Weight &amp; Width</dd>
+            </div>
+            <div>
+              <dt>Version:</dt>
+              <dd>01.00</dd>
+            </div>
+            <div class="hero-meta__designer">
+              <dt>Designed by:</dt>
+              <dd>Marco Goran Romano</dd>
+            </div>
+          </dl>
+        </section>
+
+        <!-- Intro: Aldo Rossi + Download + Description -->
+        <section class="row row--intro" aria-label="Introduction">
+          <div class="intro-left">
+            <figure class="window window--aldo">
+              <img
+                class="window__chrome"
+                src="./assets/svg/FRAME_002.svg"
+                alt=""
+                width="490"
+                height="410"
+                decoding="async"
+              />
+              <img
+                class="window__photo"
+                src="./assets/images/fontivegge-aldo-rossi.jpg"
+                alt="Centro direzionale di Fontivegge by Aldo Rossi"
+                width="470"
+                height="360"
+                decoding="async"
+              />
+            </figure>
+
+            <a
+              class="btn-download"
+              href="https://github.com/marcogoranromano/riottosa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DOWNLOAD
+            </a>
+          </div>
+
+          <article class="window window--description">
+            <img
+              class="window__chrome"
+              src="./assets/svg/FRAME_003.svg"
+              alt=""
+              width="1060"
+              height="550"
+              decoding="async"
+            />
+            <h1 class="description__headline vf vf--rc">
+              Riottosa IS An Open<br />
+              Source typeface for<br />
+              collective voices<br />
+              &amp; common causes.
+            </h1>
+            <div class="description__body meta">
+              <span class="description__arrow vf vf--bw" aria-hidden="true"
+                >→</span
+              >
+              <p>
+                Riottosa is an open-source variable display typeface inspired by
+                the industrial heritage of Fontivegge, Perugia. Defined by bold
+                geometric forms, strong horizontal contrast, and a unicase
+              </p>
+              <p>
+                structure, it draws from industrial lettering and protest
+                graphics. Its two variable axes—Weight and Width—offer
+                flexibility while preserving a strong visual identity.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <!-- Ampersand / RATM / Figures / Strike 01 -->
+        <section class="row row--figures" aria-label="Specimens and archive">
+          <article class="window window--ampersand">
+            <img
+              class="window__chrome"
+              src="./assets/svg/FRAME_004.svg"
+              alt=""
+              width="380"
+              height="410"
+              decoding="async"
+            />
+            <p class="ampersand__glyph vf vf--bw" aria-hidden="true">&amp;</p>
+            <p class="ampersand__caption meta">
+              Ampersand<br />— Riottosa Bold Wide
+            </p>
+          </article>
+
+          <article class="window window--ratm">
+            <img
+              class="window__chrome"
+              src="./assets/svg/FRAME_005.svg"
+              alt=""
+              width="380"
+              height="410"
+              decoding="async"
+            />
+            <p class="ratm__quote vf vf--rw">
+              anger<br />— is a<br />(gift).
+            </p>
+            <p class="ratm__credit meta">
+              “Freedom” by Rage Against the Machine, 1992.
+            </p>
+          </article>
+
+          <article class="window window--figures">
+            <div class="window__frame"></div>
+            <p class="figures__years vf vf--bc">
+              1893<br />
+              1962<br />
+              2017
+            </p>
+          </article>
+
+          <figure class="window window--photo window--strike-01">
+            <div class="window__frame"></div>
+            <img
+              class="window__photo window__photo--fill"
+              src="./assets/images/sciopero-pirelli-milano-1969.jpg"
+              alt="Sciopero degli operai Pirelli, Milano, 1969"
+              width="370"
+              height="410"
+              decoding="async"
+            />
+          </figure>
+        </section>
+
+        <!-- Sabotage banner -->
+        <section class="window window--sabotage-banner" aria-label="Sabotage">
+          <img
+            class="window__chrome"
+            src="./assets/svg/FRAME_006.svg"
+            alt=""
+            width="1570"
+            height="240"
+            decoding="async"
+          />
+          <p class="sabotage-banner__text vf vf--bw">SaBOTAGE™</p>
+        </section>
+
+        <!-- Strike 02 / Brackets | Waterfall 01 / Strike 03 · SOS · Sabotage -->
+        <section class="row row--mosaic" aria-label="Type specimens and archive">
+          <div class="mosaic-left">
+            <figure class="window window--photo window--strike-02">
+              <div class="window__frame"></div>
+              <img
+                class="window__photo window__photo--fill"
+                src="./assets/images/autunno-caldo-operai-1969.jpg"
+                alt="Manifestazione di operai durante l’autunno caldo, 1969"
+                width="620"
+                height="390"
+                decoding="async"
+              />
+            </figure>
+
+            <article class="window window--brackets">
+              <img
+                class="window__chrome"
+                src="./assets/svg/FRAME_008.svg"
+                alt=""
+                width="620"
+                height="680"
+                decoding="async"
+              />
+              <div class="brackets__words">
+                <p class="vf">
+                  <span class="vf--rc">{</span
+                  ><span class="vf--bc">LUCHA</span
+                  ><span class="vf--rc">}</span>
+                </p>
+                <p class="vf vf--rc">[BRUCIA]</p>
+                <p class="vf">
+                  <span class="vf--bc">(</span
+                  ><span class="vf--bw">WOW</span
+                  ><span class="vf--rc">)</span>
+                </p>
+              </div>
+              <p class="brackets__caption">
+                <span class="vf vf--bw" aria-hidden="true">→</span>
+                <span class="meta">Brackets</span>
+              </p>
+            </article>
+          </div>
+
+          <div class="mosaic-right">
+            <article class="window window--waterfall-01">
+              <img
+                class="window__chrome"
+                src="./assets/svg/FRAME_007.svg"
+                alt=""
+                width="930"
+                height="670"
+                decoding="async"
+              />
+              <ul class="waterfall">
+                <li>
+                  <span class="waterfall__label meta"
+                    >Riottosa<br />Bold Wide</span
+                  >
+                  <span class="waterfall__sample vf vf--bw">POLITICO</span>
+                </li>
+                <li>
+                  <span class="waterfall__label meta"
+                    >Riottosa<br />Bold Condensed</span
+                  >
+                  <span class="waterfall__sample vf vf--bc">InCLuSIVITà</span>
+                </li>
+                <li>
+                  <span class="waterfall__label meta"
+                    >Riottosa<br />Regular Wide</span
+                  >
+                  <span class="waterfall__sample vf vf--rw">SInDaCATO</span>
+                </li>
+                <li>
+                  <span class="waterfall__label meta"
+                    >Riottosa<br />Regular Cond.</span
+                  >
+                  <span class="waterfall__sample vf vf--rc">ANTIFASCISMO</span>
+                </li>
+              </ul>
+            </article>
+
+            <div class="mosaic-right__lower">
+              <div class="mosaic-right__stack">
+                <figure class="window window--photo window--strike-03">
+                  <div class="window__frame window__frame--round"></div>
+                  <img
+                    class="window__photo window__photo--fill"
+                    src="./assets/images/metalmeccanici-1969.jpg"
+                    alt="Operai metalmeccanici in manifestazione, 1969"
+                    width="330"
+                    height="240"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="box box--sos vf vf--bw" aria-hidden="true">SOS</div>
+              </div>
+
+              <article class="window window--sabotage-def">
+                <img
+                  class="window__chrome"
+                  src="./assets/svg/FRAME_009.svg"
+                  alt=""
+                  width="580"
+                  height="400"
+                  decoding="async"
+                />
+                <h2 class="sabotage-def__title vf vf--bw">SABOTAGE</h2>
+                <p class="sabotage-def__text vf vf--rc">
+                  Le&nbsp;sabotage&nbsp;est l'action de détériorer, mettre hors
+                  d’usage volontairement et le plus souvent clandestinement, du
+                  <strong class="vf vf--bc">matériel,</strong> des machines, des
+                  installations militaires ou civiles, ou de désorganiser et de
+                  <strong class="vf vf--bc">compromettre</strong> le succès d'un
+                  projet, d'une puissance politique ou d'une entreprise.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Window — Hero 2 -->
+        <section class="window window--hero-2" aria-label="Per non dimenticarlo">
+          <img
+            class="window__chrome"
+            src="./assets/svg/FRAME_010.svg"
+            alt=""
+            width="1570"
+            height="430"
+            decoding="async"
+          />
+          <div class="marquee-clip marquee-clip--hero-2" data-marquee="phrase">
+            <div class="marquee-track">
+              <p class="marquee-line marquee-line--phrase vf vf--rc">
+                <span>Per non dimenticarlo</span>
+                <span class="marquee-sep" aria-hidden="true"> · </span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bottom grid -->
+        <section class="row row--bottom" aria-label="More specimens">
+          <div class="bottom-left">
+            <a
+              class="btn-download btn-download--compact"
+              href="https://github.com/marcogoranromano/riottosa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DOWNLOAD
+            </a>
+
+            <article class="window window--waterfall-02">
+              <img
+                class="window__chrome"
+                src="./assets/svg/FRAME_011.svg"
+                alt=""
+                width="490"
+                height="560"
+                decoding="async"
+              />
+              <p class="waterfall-02 vf vf--bc">
+                <span>FoRtIsSiMo</span>
+                <span
+                  ><span class="vf vf--bw">FrEnEtIc</span
+                  ><span class="vf vf--bc">VeGeTaRiAn</span></span
+                >
+                <span class="vf vf--bw">WeLcOmE</span>
+                <span>ViEwPoInTs</span>
+                <span class="vf vf--bw">PoLiTiCs</span>
+              </p>
+            </article>
+          </div>
+
+          <div class="bottom-mid">
+            <article class="window window--solidaritat">
+              <img
+                class="window__chrome"
+                src="./assets/svg/FRAME_012.svg"
+                alt=""
+                width="640"
+                height="330"
+                decoding="async"
+              />
+              <p class="solidaritat__text vf vf--bc">
+                Solidarität, Selbstverwaltung und gegenseitige Hilfe bilden das
+                Fundament einer gerechteren Gemeinschaft. Wir sind überzeugt,
+                dass das Teilen von Wissen, Werkzeugen und Ressourcen neue Formen
+                der Zusammenarbeit schaffen kann, in denen alle mitwirken, ihren
+                Beitrag leisten und den Wandel gemeinsam gestalten.
+              </p>
+            </article>
+
+            <figure class="window window--photo window--strike-04">
+              <div class="window__frame"></div>
+              <img
+                class="window__photo window__photo--inset"
+                src="./assets/images/sciopero-autunno-caldo.jpg"
+                alt="Sciopero durante l’autunno caldo, 1969"
+                width="490"
+                height="310"
+                decoding="async"
+              />
+              <span class="strike-04__arrow vf vf--bc" aria-hidden="true"
+                >↙</span
+              >
+            </figure>
+          </div>
+
+          <div class="bottom-right">
+            <article class="window window--waterfall-03">
+              <img
+                class="window__chrome"
+                src="./assets/svg/FRAME_013.svg"
+                alt=""
+                width="400"
+                height="540"
+                decoding="async"
+              />
+              <p class="waterfall-03 vf">
+                <span class="vf vf--bw">CaSuAl</span>
+                <span class="vf vf--bw">Slogan</span>
+                <span class="vf vf--bc">DePrIvEd</span>
+                <span class="vf vf--bc">Outcasts</span>
+                <span class="vf vf--rc">SuStAiNiNg</span>
+                <span class="vf vf--rc">Guerrillas</span>
+                <span class="vf vf--rw">CaPaBlE</span>
+                <span class="vf vf--rw">ReStArT</span>
+              </p>
+            </article>
+
+            <div class="box box--mgr vf vf--bw" aria-hidden="true">MGR</div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <hr class="footer__rule" />
+        <div class="footer__grid">
+          <p class="footer__brand vf vf--bw">RIOTTOSA</p>
+          <p class="footer__license meta">
+            Riottosa is released under the SIL Open Font License 1.1 (OFL-1.1),
+            allowing anyone to use, study, modify and redistribute the typeface
+            under the terms of the license.
+          </p>
+          <div class="footer__credits meta">
+            <p><em>Designed by:</em></p>
+            <p>Marco Goran Romano</p>
+            <p>
+              <a
+                href="https://www.marcogoranromano.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >www.marcogoranromano.com</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://www.instagram.com/marcogoranromano"
+                target="_blank"
+                rel="noopener noreferrer"
+                >@marcogoranromano</a
+              >
+            </p>
+          </div>
+          <p class="footer__images meta">
+            <em>Images:</em><br />
+            Wikimedia Commons &amp; public domain —
+            <a href="assets/credits/images.md">Full credits</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./script.js" defer></script>
   </body>
 </html>

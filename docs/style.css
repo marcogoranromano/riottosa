@@ -396,6 +396,7 @@ ul {
   font-size: clamp(6rem, 20vw, 22.5rem);
   line-height: 1;
   pointer-events: none;
+  font-variation-settings: "wght" 100, "wdth" 100;
 }
 
 .ampersand__caption {

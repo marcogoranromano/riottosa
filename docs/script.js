@@ -1,5 +1,7 @@
 (() => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const DESIGN_WIDTH = 1728;
+  const SCALE_MIN_WIDTH = 1280;
 
   const AMPERSAND_STATES = [
     { label: "Riottosa Regular Condensed", wght: 0, wdth: 0 },
@@ -27,7 +29,8 @@
     const line = duplicateLine(track);
     if (!line) return;
 
-    const distance = line.getBoundingClientRect().width;
+    // Use layout width (pre-transform) so marquee distance stays correct when the stage scales
+    const distance = line.offsetWidth;
     if (!distance) return;
 
     const speed = clip.dataset.marquee === "phrase" ? 90 : 120;
@@ -119,15 +122,45 @@
     playNext();
   }
 
+  function updateDesktopScale() {
+    const stage = document.querySelector(".stage");
+    const page = document.querySelector(".page");
+    if (!stage || !page) return;
+
+    const viewportWidth = window.innerWidth;
+
+    if (viewportWidth < SCALE_MIN_WIDTH) {
+      document.documentElement.style.setProperty("--desktop-scale", "1");
+      stage.style.height = "";
+      return;
+    }
+
+    const scale = Math.min(1, viewportWidth / DESIGN_WIDTH);
+    document.documentElement.style.setProperty(
+      "--desktop-scale",
+      String(scale)
+    );
+
+    // Transform does not affect layout size; shrink the shell to the visual height
+    const naturalHeight = page.offsetHeight;
+    stage.style.height = `${naturalHeight * scale}px`;
+  }
+
   function init() {
+    updateDesktopScale();
     initMarquees();
     initAmpersandAnimation();
+    updateDesktopScale();
   }
 
   let resizeTimer;
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initMarquees, 150);
+    resizeTimer = setTimeout(() => {
+      updateDesktopScale();
+      initMarquees();
+      updateDesktopScale();
+    }, 150);
   });
 
   reducedMotion.addEventListener("change", init);

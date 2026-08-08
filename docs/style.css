@@ -13,6 +13,8 @@
   --black: #000000;
   --mist: #eceff1;
   --page-max: 1728px;
+  --page-design-width: 1728px;
+  --desktop-scale: 1;
   --gutter: clamp(1rem, 4.6vw, 5rem);
   --gap: clamp(0.75rem, 1.15vw, 1.25rem);
   --radius: 20px;
@@ -57,12 +59,28 @@ ul {
   margin: 0;
 }
 
+.stage {
+  position: relative;
+  background-color: var(--yellow);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(236, 239, 241, 0) 20%,
+    var(--mist) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 68%;
+  background-position: left bottom;
+}
+
 .page {
   position: relative;
   width: min(100%, var(--page-max));
   margin-inline: auto;
   padding: var(--gutter);
   padding-bottom: clamp(2rem, 4vw, 4rem);
+  /* Local yellow/gradient so .blend-multiply can composite against it
+     (transform on .page isolates blending from .stage). .stage keeps the
+     same fill for full-width sides above 1728px. */
   background-color: var(--yellow);
   background-image: linear-gradient(
     to bottom,
@@ -705,10 +723,11 @@ ul {
   left: 3.1%;
   right: 3.1%;
   top: 18%;
-  bottom: 6%;
+  bottom: 0;
   font-size: 25px;
   line-height: 30px;
-  overflow: auto;
+  letter-spacing: -0.005em;
+  overflow: visible;
 }
 
 .window--strike-04 {
@@ -792,6 +811,123 @@ ul {
 @media (prefers-reduced-motion: reduce) {
   .marquee-track.is-ready {
     animation: none;
+  }
+}
+
+/* Fixed 1728px desktop stage: center above 1728, scale down to 1280 */
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 5rem;
+    --gap: 1.25rem;
+  }
+
+  .stage {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .page {
+    width: var(--page-design-width);
+    max-width: none;
+    margin-left: calc(
+      (100vw - (var(--page-design-width) * var(--desktop-scale))) / 2
+    );
+    margin-right: auto;
+    padding: var(--gutter);
+    padding-bottom: 4rem;
+    transform: scale(var(--desktop-scale));
+    transform-origin: top left;
+  }
+
+  /* Freeze fluid clamps to their finalized 1728px values */
+  .btn-download {
+    min-height: 7.5rem;
+    font-size: 4.125rem;
+  }
+
+  .btn-download--compact {
+    min-height: 6.25rem;
+    font-size: 3.45625rem;
+  }
+
+  .box {
+    font-size: 6.875rem;
+  }
+
+  .box--sos {
+    min-height: 8.64rem;
+  }
+
+  .box--mgr {
+    min-height: 7.5rem;
+  }
+
+  .marquee-line {
+    font-size: 31.875rem;
+  }
+
+  .marquee-line--phrase {
+    font-size: 25rem;
+  }
+
+  .description__headline {
+    font-size: 6.804rem;
+  }
+
+  .description__arrow {
+    font-size: 2.16rem;
+  }
+
+  .ampersand__glyph {
+    font-size: 21.6rem;
+  }
+
+  .ratm__quote {
+    font-size: 4.644rem;
+  }
+
+  .figures__years {
+    font-size: 9.18rem;
+  }
+
+  .sabotage-banner__text {
+    font-size: 12.96rem;
+  }
+
+  .waterfall__sample {
+    font-size: 8.64rem;
+  }
+
+  .brackets__words {
+    font-size: 9.612rem;
+  }
+
+  .brackets__caption .vf {
+    font-size: 2.16rem;
+  }
+
+  .sabotage-def__title {
+    font-size: 1.55rem;
+  }
+
+  .row--bottom {
+    margin-bottom: 3.5rem;
+  }
+
+  .strike-04__arrow {
+    font-size: 10.8rem;
+  }
+
+  .waterfall-03 {
+    font-size: 3.942rem;
+  }
+
+  .footer__grid {
+    gap: var(--gap) 2.5rem;
+  }
+
+  .footer__brand {
+    font-size: 1.55rem;
   }
 }
 

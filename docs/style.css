@@ -509,11 +509,39 @@ ul {
   white-space: nowrap;
 }
 
+.waterfall__label--bold-wide {
+  position: relative;
+  top: 20px;
+}
+
+.waterfall__label--regular-wide {
+  position: relative;
+  top: 5px;
+}
+
 .waterfall__sample {
   font-size: clamp(2rem, 8vw, 8.625rem);
   line-height: 1.09;
   letter-spacing: -0.01em;
   padding-left: 1.5%;
+}
+
+.waterfall__sample--politico {
+  letter-spacing: 0.006em;
+}
+
+.waterfall__sample--inclusivita {
+  letter-spacing: -0.016em;
+}
+
+.waterfall__sample--sindacato {
+  letter-spacing: -0.021em;
+  transform: translateY(-5px);
+}
+
+.waterfall__sample--antifascismo {
+  letter-spacing: 0.01em;
+  transform: translateY(-5px);
 }
 
 .window--brackets {

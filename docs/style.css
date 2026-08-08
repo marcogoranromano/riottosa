@@ -390,7 +390,7 @@ ul {
 .ampersand__glyph {
   position: absolute;
   left: 2.5%;
-  top: -2%;
+  top: calc(-2% + 10px);
   width: 95%;
   text-align: center;
   font-size: clamp(6rem, 20vw, 22.5rem);
@@ -527,7 +527,7 @@ ul {
   right: 5%;
   top: 6%;
   display: grid;
-  gap: 1.5%;
+  gap: 20px;
   text-align: center;
   font-size: clamp(2.5rem, 8.9vw, 9.625rem);
   line-height: 0.82;
@@ -683,13 +683,15 @@ ul {
 }
 
 .window--strike-04 {
+  width: 100%;
+  margin: 0;
   aspect-ratio: 640 / 330;
 }
 
 .strike-04__arrow {
   position: absolute;
-  right: 3%;
-  top: 28%;
+  right: calc(3% + 10px);
+  top: calc(28% + 50px);
   font-size: clamp(4rem, 10vw, 11.25rem);
   line-height: 1;
   pointer-events: none;

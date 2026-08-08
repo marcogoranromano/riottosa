@@ -63,19 +63,25 @@ ul {
   margin-inline: auto;
   padding: var(--gutter);
   padding-bottom: clamp(2rem, 4vw, 4rem);
-  isolation: isolate;
-}
-
-.page__gradient {
-  pointer-events: none;
-  position: absolute;
-  inset: 32% 0 0;
-  z-index: -1;
-  background: linear-gradient(
+  background-color: var(--yellow);
+  background-image: linear-gradient(
     to bottom,
     rgba(236, 239, 241, 0) 20%,
     var(--mist) 100%
   );
+  background-repeat: no-repeat;
+  background-size: 100% 68%;
+  background-position: left bottom;
+}
+
+/* Decorative duplicate of the page background gradient; kept for markup stability */
+.page__gradient {
+  display: none;
+}
+
+/* Explicit multiply against the page yellow/gradient background */
+.blend-multiply {
+  mix-blend-mode: multiply;
 }
 
 /* Variable font helpers */
@@ -137,7 +143,6 @@ ul {
 .window__photo {
   position: absolute;
   object-fit: cover;
-  mix-blend-mode: multiply;
 }
 
 .window__photo--fill {
@@ -172,7 +177,6 @@ ul {
   font-variation-settings: "wght" 100, "wdth" 100;
   text-decoration: none;
   text-align: center;
-  mix-blend-mode: multiply;
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
@@ -199,7 +203,6 @@ ul {
   border-radius: var(--radius);
   background: var(--black);
   color: #fff;
-  mix-blend-mode: multiply;
   font-size: clamp(3.5rem, 6.5vw, 6.875rem);
   line-height: 1;
 }
@@ -352,6 +355,11 @@ ul {
   aspect-ratio: 380 / 410;
 }
 
+.window--ratm .window__chrome {
+  position: relative;
+  z-index: 0;
+}
+
 .ampersand__glyph {
   position: absolute;
   left: 2.5%;
@@ -371,21 +379,21 @@ ul {
 
 .ratm__quote {
   position: absolute;
+  z-index: 1;
   left: 5.25%;
   top: 3%;
   color: #fff;
-  mix-blend-mode: multiply;
   font-size: clamp(1.75rem, 4.3vw, 4.7rem);
   line-height: 1.07;
 }
 
 .ratm__credit {
   position: absolute;
+  z-index: 1;
   left: 5.25%;
   right: 5%;
   bottom: 6%;
   color: #fff;
-  mix-blend-mode: multiply;
 }
 
 .figures__years {
@@ -400,7 +408,8 @@ ul {
 
 .window--strike-01,
 .window--strike-02,
-.window--strike-03 {
+.window--strike-03,
+.window--strike-04 {
   overflow: hidden;
 }
 
@@ -646,8 +655,13 @@ ul {
 /* —— Footer —— */
 .footer__rule {
   border: 0;
-  border-top: 1px solid var(--black);
+  border-top: 2px solid #000;
   margin: 0 0 0.75rem;
+}
+
+.footer__license,
+.footer__images {
+  white-space: normal;
 }
 
 .footer__grid {

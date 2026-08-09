@@ -2,6 +2,8 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const DESIGN_WIDTH = 1728;
   const SCALE_MIN_WIDTH = 1280;
+  const TABLET_DESIGN_WIDTH = 768;
+  const TABLET_MAX_WIDTH = 1279;
 
   const AMPERSAND_STATES = [
     { label: "Riottosa Regular Condensed", wght: 0, wdth: 0 },
@@ -122,44 +124,58 @@
     playNext();
   }
 
-  function updateDesktopScale() {
+  function updateStageScale() {
     const stage = document.querySelector(".stage");
     const page = document.querySelector(".page");
     if (!stage || !page) return;
 
     const viewportWidth = window.innerWidth;
 
-    if (viewportWidth < SCALE_MIN_WIDTH) {
-      document.documentElement.style.setProperty("--desktop-scale", "1");
-      stage.style.height = "";
+    if (viewportWidth >= SCALE_MIN_WIDTH) {
+      const scale = Math.min(1, viewportWidth / DESIGN_WIDTH);
+      document.documentElement.style.setProperty(
+        "--desktop-scale",
+        String(scale)
+      );
+      document.documentElement.style.setProperty("--tablet-scale", "1");
+
+      const naturalHeight = page.offsetHeight;
+      stage.style.height = `${naturalHeight * scale}px`;
       return;
     }
 
-    const scale = Math.min(1, viewportWidth / DESIGN_WIDTH);
-    document.documentElement.style.setProperty(
-      "--desktop-scale",
-      String(scale)
-    );
+    if (viewportWidth >= TABLET_DESIGN_WIDTH && viewportWidth <= TABLET_MAX_WIDTH) {
+      const scale = viewportWidth / TABLET_DESIGN_WIDTH;
+      document.documentElement.style.setProperty("--desktop-scale", "1");
+      document.documentElement.style.setProperty(
+        "--tablet-scale",
+        String(scale)
+      );
 
-    // Transform does not affect layout size; shrink the shell to the visual height
-    const naturalHeight = page.offsetHeight;
-    stage.style.height = `${naturalHeight * scale}px`;
+      const naturalHeight = page.offsetHeight;
+      stage.style.height = `${naturalHeight * scale}px`;
+      return;
+    }
+
+    document.documentElement.style.setProperty("--desktop-scale", "1");
+    document.documentElement.style.setProperty("--tablet-scale", "1");
+    stage.style.height = "";
   }
 
   function init() {
-    updateDesktopScale();
+    updateStageScale();
     initMarquees();
     initAmpersandAnimation();
-    updateDesktopScale();
+    updateStageScale();
   }
 
   let resizeTimer;
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      updateDesktopScale();
+      updateStageScale();
       initMarquees();
-      updateDesktopScale();
+      updateStageScale();
     }, 150);
   });
 

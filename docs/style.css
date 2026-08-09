@@ -15,6 +15,7 @@
   --page-max: 1728px;
   --page-design-width: 1728px;
   --desktop-scale: 1;
+  --tablet-scale: 1;
   --gutter: clamp(1rem, 4.6vw, 5rem);
   --gap: clamp(0.75rem, 1.15vw, 1.25rem);
   --radius: 20px;
@@ -144,6 +145,20 @@ ul {
   height: auto;
   pointer-events: none;
   user-select: none;
+}
+
+.window__chrome--tablet {
+  display: none;
+}
+
+/* Tablet lockup — desktop uses the marquee instead */
+.hero-lockup {
+  display: none;
+}
+
+/* Must beat .btn-download { display: grid } so this stays desktop-hidden */
+.btn-download.btn-download--tablet-mid {
+  display: none;
 }
 
 .window__frame {
@@ -931,8 +946,425 @@ ul {
   }
 }
 
-/* Responsive */
-@media (max-width: 1100px) {
+/* —— Tablet stage (768–1279): fixed 768px design, scales with viewport —— */
+@media (min-width: 768px) and (max-width: 1279px) {
+  :root {
+    --page-design-width: 768px;
+    --tablet-scale: 1;
+    --gutter: 18px;
+    --gap: 20px;
+  }
+
+  .stage {
+    width: 100%;
+    overflow: hidden;
+    background-size: 100% 55%;
+  }
+
+  .page {
+    width: var(--page-design-width);
+    max-width: none;
+    margin-left: calc(
+      (100vw - (var(--page-design-width) * var(--tablet-scale))) / 2
+    );
+    margin-right: auto;
+    padding: 30px 18px 4rem;
+    transform: scale(var(--tablet-scale));
+    transform-origin: top left;
+    background-size: 100% 55%;
+  }
+
+  .window__chrome--desktop {
+    display: none;
+  }
+
+  .window__chrome--tablet {
+    display: block;
+  }
+
+  .btn-download.btn-download--tablet-mid {
+    display: grid;
+  }
+
+  /* Flatten nested rows so main can reorder to match the Figma tablet frame */
+  .row--intro,
+  .intro-left,
+  .row--figures,
+  .row--mosaic,
+  .mosaic-left,
+  .mosaic-right,
+  .mosaic-right__lower,
+  .mosaic-right__stack,
+  .row--bottom,
+  .bottom-left,
+  .bottom-mid,
+  .bottom-right {
+    display: contents;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 356px));
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Desktop-only blocks */
+  .window--aldo,
+  .window--sabotage-banner,
+  .window--waterfall-01,
+  .window--strike-03,
+  .box--sos,
+  .window--hero-2,
+  .window--strike-04 {
+    display: none;
+  }
+
+  .window--hero .marquee-clip {
+    display: none;
+  }
+
+  .hero-lockup {
+    display: block;
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 75px;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .hero-lockup__line {
+    display: block;
+    font-size: 280px;
+    line-height: 210px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-lockup__line:last-child {
+    margin-top: 35px;
+    margin-left: 10px;
+  }
+
+  /* 1. Hero */
+  .window--hero {
+    grid-column: 1 / -1;
+    order: 1;
+    margin-bottom: 0;
+    aspect-ratio: 732 / 690;
+  }
+
+  .hero-meta {
+    left: 24px;
+    right: 24px;
+    bottom: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 52px;
+    row-gap: 26px;
+  }
+
+  .hero-meta__designer {
+    justify-self: start;
+    text-align: left;
+  }
+
+  /* 2. Download 01 (from intro) */
+  .intro-left > .btn-download {
+    grid-column: 1 / -1;
+    order: 2;
+    width: 100%;
+    min-height: 120px;
+    font-size: 66px;
+  }
+
+  /* 3. Description */
+  .window--description {
+    grid-column: 1 / -1;
+    order: 3;
+    aspect-ratio: 732 / 520;
+  }
+
+  .description__headline {
+    left: 13px;
+    top: 0;
+    right: 4%;
+    font-size: 75px;
+    line-height: 85px;
+  }
+
+  .description__body {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    grid-template-columns: auto minmax(0, 440px);
+    gap: 0.35rem 1.35rem;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .description__body p {
+    max-width: none;
+  }
+
+  .description__body p + p {
+    grid-column: 2;
+  }
+
+  .description__arrow {
+    font-size: 35px;
+    transform: translateY(-0.45em);
+  }
+
+  /* 4–5. Ampersand + RATM */
+  .window--ampersand,
+  .window--ratm {
+    aspect-ratio: 356 / 410;
+    width: 100%;
+  }
+
+  .window--ampersand {
+    order: 4;
+    overflow: hidden;
+  }
+
+  .window--ratm {
+    order: 5;
+  }
+
+  .ampersand__glyph {
+    left: 50%;
+    top: 45px;
+    width: 327px;
+    margin-left: -163.5px;
+    font-size: 360px;
+    line-height: 250px;
+  }
+
+  .ampersand__caption {
+    left: 20px;
+    right: 20px;
+    bottom: 23px;
+  }
+
+  .ratm__quote {
+    left: 20px;
+    top: 12px;
+    font-size: 75px;
+    line-height: 80px;
+  }
+
+  .ratm__credit {
+    left: 10px;
+    right: 10px;
+    bottom: 23px;
+    text-align: center;
+  }
+
+  /* 6. Sabotage definition (full width, earlier than desktop) */
+  .window--sabotage-def {
+    grid-column: 1 / -1;
+    order: 6;
+    aspect-ratio: 732 / 480;
+  }
+
+  .sabotage-def__title {
+    left: 20px;
+    top: 10px;
+    font-size: 25px;
+  }
+
+  .sabotage-def__text {
+    left: 20px;
+    right: 20px;
+    top: 70px;
+    bottom: 30px;
+    font-size: 37px;
+    line-height: 45px;
+    overflow: visible;
+  }
+
+  /* 7–8. Strike 01 + Figures */
+  .window--strike-01,
+  .window--figures {
+    aspect-ratio: 356 / 410;
+    width: 100%;
+  }
+
+  .window--strike-01 {
+    order: 7;
+  }
+
+  .window--figures {
+    order: 8;
+  }
+
+  .figures__years {
+    font-size: 130px;
+    line-height: 125px;
+  }
+
+  /* 9. Download 02 (tablet-only mid button) */
+  .btn-download.btn-download--tablet-mid {
+    grid-column: 1 / -1;
+    order: 9;
+    width: 100%;
+    min-height: 120px;
+    font-size: 66px;
+  }
+
+  /* 10. Brackets */
+  .window--brackets {
+    grid-column: 1 / -1;
+    order: 10;
+    aspect-ratio: 732 / 750;
+  }
+
+  .brackets__words {
+    left: 5%;
+    right: 5%;
+    top: 40px;
+    gap: 50px;
+    font-size: 186px;
+    line-height: 126px;
+  }
+
+  .brackets__caption {
+    left: 26px;
+    bottom: 40px;
+    gap: 1.75rem;
+  }
+
+  .brackets__caption .vf {
+    font-size: 35px;
+  }
+
+  /* 11. Strike 02 */
+  .window--strike-02 {
+    grid-column: 1 / -1;
+    order: 11;
+    aspect-ratio: 732 / 480;
+  }
+
+  /* 12. Solidarität */
+  .window--solidaritat {
+    grid-column: 1 / -1;
+    order: 12;
+    aspect-ratio: 730 / 310;
+  }
+
+  .solidaritat__text {
+    left: 20px;
+    right: 20px;
+    top: 60px;
+    bottom: 20px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .solidaritat__text br {
+    display: none;
+  }
+
+  /* 13–15. Waterfall 03 | MGR + Waterfall 02 */
+  .window--waterfall-03 {
+    order: 13;
+    grid-column: 1;
+    grid-row: span 2;
+    aspect-ratio: 356 / 540;
+    align-self: start;
+  }
+
+  .box--mgr {
+    order: 14;
+    grid-column: 2;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 356 / 120;
+    font-size: 110px;
+  }
+
+  .window--waterfall-02 {
+    order: 15;
+    grid-column: 2;
+    aspect-ratio: 356 / 400;
+  }
+
+  .waterfall-03 {
+    left: 12%;
+    right: 5%;
+    top: 1.5%;
+    bottom: 2%;
+    font-size: 57px;
+    line-height: 60px;
+  }
+
+  .waterfall-02 {
+    left: 5%;
+    right: 5%;
+    top: 62px;
+    bottom: 20px;
+    font-size: 52px;
+    line-height: 52px;
+  }
+
+  .waterfall-02 > span {
+    font-size: 52px;
+    line-height: 52px;
+  }
+
+  /* 16. Download 03 (bottom) */
+  .btn-download--compact {
+    grid-column: 1 / -1;
+    order: 16;
+    width: 100%;
+    min-height: 120px;
+    font-size: 66px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 100px;
+  }
+
+  .footer__grid {
+    grid-template-columns: minmax(0, 260px) minmax(0, 260px);
+    column-gap: 130px;
+    row-gap: 0.35rem;
+    align-items: start;
+  }
+
+  .footer__brand {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 25px;
+    margin-bottom: 0.35rem;
+  }
+
+  .footer__license {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .footer__license br {
+    display: none;
+  }
+
+  .footer__credits {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .footer__images {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 0.75rem;
+  }
+}
+
+/* Responsive — temporary behavior below tablet (mobile later) */
+@media (max-width: 767px) {
   .row--intro,
   .row--figures,
   .row--mosaic,

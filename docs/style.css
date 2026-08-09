@@ -389,6 +389,10 @@ ul {
   max-width: 28rem;
 }
 
+.description__col--tablet {
+  display: none;
+}
+
 /* —— Figures row —— */
 .row--figures {
   display: grid;
@@ -1088,7 +1092,7 @@ ul {
 
   .description__headline {
     left: 13px;
-    top: 0;
+    top: 10px;
     right: 4%;
     font-size: 75px;
     line-height: 85px;
@@ -1104,17 +1108,20 @@ ul {
     justify-content: start;
   }
 
-  .description__body p {
-    max-width: none;
+  .description__col--1,
+  .description__col--2 {
+    display: none;
   }
 
-  .description__body p + p {
+  .description__col--tablet {
+    display: block;
+    max-width: none;
     grid-column: 2;
   }
 
   .description__arrow {
     font-size: 35px;
-    transform: translateY(-0.45em);
+    transform: translateY(calc(-0.45em + 10px));
   }
 
   /* 4–5. Ampersand + RATM */
@@ -1135,7 +1142,7 @@ ul {
 
   .ampersand__glyph {
     left: 50%;
-    top: 45px;
+    top: 50px;
     width: 327px;
     margin-left: -163.5px;
     font-size: 360px;
@@ -1171,7 +1178,7 @@ ul {
 
   .sabotage-def__title {
     left: 20px;
-    top: 10px;
+    top: 17px;
     font-size: 25px;
   }
 
@@ -1222,17 +1229,29 @@ ul {
   }
 
   .brackets__words {
-    left: 5%;
+    left: calc(5% - 10px);
     right: 5%;
-    top: 40px;
+    top: 50px;
     gap: 50px;
     font-size: 186px;
     line-height: 126px;
   }
 
+  .brackets__words > p:first-child {
+    transform: translateY(-10px);
+  }
+
+  .brackets__words > p:nth-child(2) {
+    transform: translateY(-40px);
+  }
+
+  .brackets__words > p:nth-child(3) {
+    transform: translateY(-70px);
+  }
+
   .brackets__caption {
     left: 26px;
-    bottom: 40px;
+    bottom: 20px;
     gap: 1.75rem;
   }
 
@@ -1257,7 +1276,7 @@ ul {
   .solidaritat__text {
     left: 20px;
     right: 20px;
-    top: 60px;
+    top: 70px;
     bottom: 20px;
     font-size: 25px;
     line-height: 30px;
@@ -1292,9 +1311,9 @@ ul {
   }
 
   .waterfall-03 {
-    left: 12%;
+    left: calc(12% + 15px);
     right: 5%;
-    top: 1.5%;
+    top: calc(1.5% - 20px);
     bottom: 2%;
     font-size: 57px;
     line-height: 60px;
@@ -1460,7 +1479,7 @@ ul {
     grid-template-columns: auto 1fr;
   }
 
-  .description__body p:last-child {
+  .description__col--2 {
     grid-column: 2;
   }
 

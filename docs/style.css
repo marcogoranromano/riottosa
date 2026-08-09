@@ -16,6 +16,7 @@
   --page-design-width: 1728px;
   --desktop-scale: 1;
   --tablet-scale: 1;
+  --mobile-scale: 1;
   --gutter: clamp(1rem, 4.6vw, 5rem);
   --gap: clamp(0.75rem, 1.15vw, 1.25rem);
   --radius: 20px;
@@ -147,11 +148,12 @@ ul {
   user-select: none;
 }
 
-.window__chrome--tablet {
+.window__chrome--tablet,
+.window__chrome--mobile {
   display: none;
 }
 
-/* Tablet lockup — desktop uses the marquee instead */
+/* Tablet/mobile lockup — desktop uses the marquee instead */
 .hero-lockup {
   display: none;
 }
@@ -986,6 +988,10 @@ ul {
     display: block;
   }
 
+  .window__chrome--mobile {
+    display: none;
+  }
+
   .btn-download.btn-download--tablet-mid {
     display: grid;
   }
@@ -1382,113 +1388,413 @@ ul {
   }
 }
 
-/* Responsive — temporary behavior below tablet (mobile later) */
+/* —— Mobile stage (<768): fixed 390px design, scales with viewport —— */
 @media (max-width: 767px) {
+  :root {
+    --page-design-width: 390px;
+    --mobile-scale: 1;
+    --gutter: 10px;
+    --gap: 10px;
+  }
+
+  .stage {
+    width: 100%;
+    overflow: hidden;
+    background-size: 100% 58%;
+  }
+
+  .page {
+    width: var(--page-design-width);
+    max-width: none;
+    margin-left: calc(
+      (100vw - (var(--page-design-width) * var(--mobile-scale))) / 2
+    );
+    margin-right: auto;
+    padding: 20px 10px 3rem;
+    transform: scale(var(--mobile-scale));
+    transform-origin: top left;
+    background-size: 100% 58%;
+  }
+
+  .window__chrome--desktop,
+  .window__chrome--tablet {
+    display: none;
+  }
+
+  .window__chrome--mobile {
+    display: block;
+  }
+
+  .btn-download.btn-download--tablet-mid {
+    display: grid;
+  }
+
+  /* Flatten nested rows into a single mobile column */
   .row--intro,
+  .intro-left,
   .row--figures,
   .row--mosaic,
-  .row--bottom,
+  .mosaic-left,
+  .mosaic-right,
   .mosaic-right__lower,
-  .footer__grid,
-  .hero-meta,
-  .description__body {
-    grid-template-columns: 1fr;
+  .mosaic-right__stack,
+  .row--bottom,
+  .bottom-left,
+  .bottom-mid,
+  .bottom-right {
+    display: contents;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: minmax(0, 370px);
+    row-gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Hidden on mobile (not in the 390px Figma frame) */
+  .window--aldo,
+  .window--sabotage-banner,
+  .window--waterfall-01,
+  .window--strike-03,
+  .box--sos,
+  .window--hero-2,
+  .window--strike-04,
+  .window--sabotage-def {
+    display: none;
+  }
+
+  .window--hero .marquee-clip {
+    display: none;
+  }
+
+  .hero-lockup {
+    display: block;
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 80px;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .hero-lockup__line {
+    display: block;
+    font-size: 140px;
+    line-height: 100px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-lockup__line:last-child {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+
+  /* 1. Hero */
+  .window--hero {
+    order: 1;
+    margin-bottom: 0;
+    aspect-ratio: 370 / 460;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .hero-meta {
+    left: 19px;
+    right: 20px;
+    bottom: 11px;
+    grid-template-columns: minmax(0, 91px) minmax(0, 1fr);
+    column-gap: 20px;
+    row-gap: 26px;
+  }
+
+  .hero-meta > div {
+    min-width: 0;
   }
 
   .hero-meta__designer {
     justify-self: start;
+    text-align: left;
   }
 
-  .window--sabotage-def {
-    aspect-ratio: 580 / 400;
+  /* 2. Download 01 */
+  .intro-left > .btn-download {
+    order: 2;
+    width: 100%;
+    min-height: 80px;
+    font-size: 48px;
   }
 
-  .window--sabotage-def .window__chrome {
-    height: auto;
-    object-fit: contain;
-  }
-
-  .ampersand__glyph {
-    font-size: clamp(7rem, 40vw, 14rem);
+  /* 3. Description */
+  .window--description {
+    order: 3;
+    aspect-ratio: 370 / 420;
+    width: 100%;
+    overflow: visible;
   }
 
   .description__headline {
-    font-size: clamp(2rem, 9vw, 4.5rem);
+    left: 13px;
+    top: 15px;
+    right: 10px;
+    font-size: 37px;
+    line-height: 45px;
   }
 
-  .sabotage-banner__text {
-    font-size: clamp(3rem, 14vw, 7rem);
+  .description__body {
+    left: 20px;
+    right: 20px;
+    bottom: 30px;
+    top: auto;
+    position: absolute;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.25rem 0.75rem;
+    align-items: start;
+    margin-top: 0;
   }
 
-  .figures__years {
-    font-size: clamp(4rem, 18vw, 8rem);
-  }
-
-  .waterfall__sample {
-    font-size: clamp(2.5rem, 12vw, 6rem);
-  }
-
-  .brackets__words {
-    font-size: clamp(3rem, 14vw, 6.5rem);
-  }
-
-  .window__photo--inset {
-    width: calc(100% - 110px);
-  }
-
-  .strike-04__arrow {
-    font-size: clamp(5rem, 18vw, 8rem);
-  }
-}
-
-@media (max-width: 640px) {
-  .page {
-    padding: 1rem;
-  }
-
-  .hero-meta {
-    position: static;
-    margin-top: 0.75rem;
-  }
-
-  .window--hero .marquee-clip,
-  .marquee-clip--hero-2 {
-    top: 14%;
-    height: 70%;
-  }
-
-  .window--description {
-    aspect-ratio: auto;
-    border: 2px solid var(--black);
-    border-radius: var(--radius);
-    padding: 1rem 1rem 1.25rem;
-  }
-
-  .window--description .window__chrome {
+  .description__col--1,
+  .description__col--2 {
     display: none;
   }
 
-  .description__headline,
-  .description__body {
-    position: static;
-  }
-
-  .description__body {
-    margin-top: 1.25rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-  }
-
-  .description__col--2 {
+  .description__col--tablet {
+    display: block;
+    max-width: none;
     grid-column: 2;
   }
 
-  .ampersand__caption,
-  .ratm__credit,
-  .brackets__caption,
-  .sabotage-def__title,
-  .sabotage-def__text,
+  .description__arrow {
+    font-size: 35px;
+    transform: translateY(-0.35em);
+  }
+
+  /* 4. Ampersand */
+  .window--ampersand {
+    order: 4;
+    aspect-ratio: 370 / 410;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ampersand__glyph {
+    left: 50%;
+    top: 50px;
+    width: 336px;
+    margin-left: -168px;
+    font-size: 360px;
+    line-height: 250px;
+  }
+
+  .ampersand__caption {
+    left: 20px;
+    right: 20px;
+    bottom: 16px;
+  }
+
+  /* 5. RATM */
+  .window--ratm {
+    order: 5;
+    aspect-ratio: 370 / 410;
+    width: 100%;
+  }
+
+  .ratm__quote {
+    left: 20px;
+    top: 12px;
+    font-size: 75px;
+    line-height: 80px;
+  }
+
+  .ratm__credit {
+    left: 20px;
+    right: 22px;
+    bottom: 43px;
+    text-align: left;
+  }
+
+  /* 6. Figures */
+  .window--figures {
+    order: 6;
+    aspect-ratio: 370 / 410;
+    width: 100%;
+  }
+
+  .figures__years {
+    font-size: 130px;
+    line-height: 125px;
+  }
+
+  /* 7. Strike 01 */
+  .window--strike-01 {
+    order: 7;
+    aspect-ratio: 369 / 410;
+    width: 100%;
+  }
+
+  /* 8. Download 02 */
+  .btn-download.btn-download--tablet-mid {
+    order: 8;
+    width: 100%;
+    min-height: 80px;
+    font-size: 48px;
+  }
+
+  /* 9. Brackets */
+  .window--brackets {
+    order: 9;
+    aspect-ratio: 370 / 420;
+    width: 100%;
+  }
+
+  .brackets__words {
+    left: 5%;
+    right: 5%;
+    top: 20px;
+    gap: 0;
+    font-size: 90px;
+    line-height: 90px;
+  }
+
+  .brackets__words > p:first-child,
+  .brackets__words > p:nth-child(2),
+  .brackets__words > p:nth-child(3) {
+    transform: none;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brackets__caption {
+    left: 26px;
+    bottom: 14px;
+    gap: 1.75rem;
+  }
+
+  .brackets__caption .vf {
+    font-size: 35px;
+  }
+
+  /* 10. Strike 02 */
+  .window--strike-02 {
+    order: 10;
+    aspect-ratio: 370 / 250;
+    width: 100%;
+  }
+
+  /* 11. Solidarität */
+  .window--solidaritat {
+    order: 11;
+    aspect-ratio: 370 / 590;
+    width: 100%;
+  }
+
   .solidaritat__text {
-    font-size: 0.875rem;
+    left: 20px;
+    right: 20px;
+    top: 60px;
+    bottom: 20px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .solidaritat__text br {
+    display: none;
+  }
+
+  /* 12. Waterfall 04 / 03 */
+  .window--waterfall-03 {
+    order: 12;
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 370 / 540;
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .waterfall-03 {
+    left: calc(12% + 10px);
+    right: calc(5% - 10px);
+    top: calc(1.5% - 20px);
+    bottom: calc(2% + 20px);
+    font-size: 57px;
+    line-height: 60px;
+  }
+
+  /* 13. MGR */
+  .box--mgr {
+    order: 13;
+    grid-column: auto;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 369 / 120;
+    font-size: 110px;
+  }
+
+  /* 14. Waterfall 02 */
+  .window--waterfall-02 {
+    order: 14;
+    grid-column: auto;
+    aspect-ratio: 370 / 410;
+    width: 100%;
+  }
+
+  .waterfall-02 {
+    left: 5%;
+    right: 5%;
+    top: 62px;
+    bottom: 20px;
+    font-size: 54px;
+    line-height: 54px;
+  }
+
+  .waterfall-02 > span {
+    font-size: 54px;
+    line-height: 54px;
+  }
+
+  /* 15. Download 03 */
+  .btn-download--compact {
+    order: 15;
+    width: 100%;
+    min-height: 80px;
+    font-size: 48px;
+  }
+
+  /* Footer — single column */
+  .footer {
+    margin-top: 100px;
+  }
+
+  .footer__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .footer__brand,
+  .footer__license,
+  .footer__credits,
+  .footer__images {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .footer__brand {
+    font-size: 25px;
+    margin-bottom: 0.35rem;
+  }
+
+  .footer__license {
+    margin-bottom: 1rem;
+  }
+
+  .footer__license br {
+    display: none;
+  }
+
+  .footer__images {
+    margin-top: 0.75rem;
   }
 }

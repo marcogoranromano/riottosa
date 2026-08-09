@@ -4,6 +4,7 @@
   const SCALE_MIN_WIDTH = 1280;
   const TABLET_DESIGN_WIDTH = 768;
   const TABLET_MAX_WIDTH = 1279;
+  const MOBILE_DESIGN_WIDTH = 390;
 
   const AMPERSAND_STATES = [
     { label: "Riottosa Regular Condensed", wght: 0, wdth: 0 },
@@ -138,6 +139,7 @@
         String(scale)
       );
       document.documentElement.style.setProperty("--tablet-scale", "1");
+      document.documentElement.style.setProperty("--mobile-scale", "1");
 
       const naturalHeight = page.offsetHeight;
       stage.style.height = `${naturalHeight * scale}px`;
@@ -151,15 +153,21 @@
         "--tablet-scale",
         String(scale)
       );
+      document.documentElement.style.setProperty("--mobile-scale", "1");
 
       const naturalHeight = page.offsetHeight;
       stage.style.height = `${naturalHeight * scale}px`;
       return;
     }
 
+    // Mobile: scale the 390px stage to the viewport (up to 767, down below 390)
+    const scale = viewportWidth / MOBILE_DESIGN_WIDTH;
     document.documentElement.style.setProperty("--desktop-scale", "1");
     document.documentElement.style.setProperty("--tablet-scale", "1");
-    stage.style.height = "";
+    document.documentElement.style.setProperty("--mobile-scale", String(scale));
+
+    const naturalHeight = page.offsetHeight;
+    stage.style.height = `${naturalHeight * scale}px`;
   }
 
   function init() {

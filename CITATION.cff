@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use Riottosa, please cite it using the metadata from this file."
+
+title: "Riottosa"
+authors:
+  - family-names: "Romano"
+    given-names: "Marco Goran"
+
+version: "1.0.0"
+date-released: 2026-08-10
+repository-code: "https://github.com/marcogoranromano/riottosa"
+license: "OFL-1.1"
+
+preferred-citation:
+  type: generic
+  title: "Riottosa"
+  authors:
+    - family-names: "Romano"
+      given-names: "Marco Goran"
+  version: "1.0.0"
+  year: 2026
+  url: "https://github.com/marcogoranromano/riottosa"
